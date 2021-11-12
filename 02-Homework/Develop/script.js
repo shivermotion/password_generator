@@ -25,8 +25,9 @@ let generatePassword = function () {
 	console.log(array.split(""));
 
 	for (let i = 0; i < 8; i++) {
-		let pw = [];
-		pw += array[i];
-		return pw.toString();
+		console.log(i);
+		let password = [];
+		password += array[i];
 	}
+	return password.toString();
 };
