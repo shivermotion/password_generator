@@ -83,7 +83,7 @@ lowerCasePrompt = () => {
 	//(push next prompt no matter the answer)
 	if (isLowerCase === true) {
 		//push lowercase letters into finalChoices array
-		finalChoices.push(lowerLetters);
+		finalChoices.push(...lowerLetters);
 		console.log(finalChoices);
 		isUpperCasePrompt();
 	} else {
@@ -98,7 +98,7 @@ isUpperCasePrompt = () => {
 	//push next prompt no matter the answer
 	if (isUpperCase === true) {
 		//push upperletters
-		finalChoices.push(upperLetters);
+		finalChoices.push(...upperLetters);
 		console.log(finalChoices);
 		hasNumbersPrompt();
 	} else {
@@ -112,7 +112,7 @@ hasNumbersPrompt = () => {
 	let hasNumbers = window.confirm("will it include numbers?");
 	//push next prompt no matter the answer
 	if (hasNumbers === true) {
-		finalChoices.push(validNum);
+		finalChoices.push(...validNum);
 		//log
 		console.log(finalChoices);
 		hasSpecCharPrompt();
@@ -127,7 +127,7 @@ hasSpecCharPrompt = () => {
 	);
 
 	if (hasSpecChar === true) {
-		finalChoices.push(specChar);
+		finalChoices.push(...specChar);
 		console.log(finalChoices);
 		window.alert("password created!");
 	}
