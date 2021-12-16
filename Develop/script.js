@@ -129,17 +129,33 @@ hasSpecCharPrompt = () => {
 	if (hasSpecChar === true) {
 		finalChoices.push(...specChar);
 		console.log(finalChoices);
+
 		window.alert("password created!");
 	}
 };
 
+//randomizer
+generateString = () => {
+	let result = "";
+
+	for (let i = 0; i < parseInt(passLength); i++) {
+		result += finalChoices.prototype.charAt(
+			Math.floor(Math.random() * parseInt(passLength))
+		);
+	}
+
+	return result;
+};
+
+console.log(generateString(parseInt(passLength)));
+
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-	var password = generatePassword();
-	var passwordText = document.querySelector("#password");
+	let password = generatePassword();
+	let passwordText = document.querySelector("#password");
 
 	passwordText.value = password;
 }
