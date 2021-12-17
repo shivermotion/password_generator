@@ -57,28 +57,31 @@ let upperLetters = [
 	"Z",
 ];
 let specChar = [];
-
-generatePassword = () => {
+let passArray = [];
+function generatePassword() {
 	//Password length prompt and 1st prompt
-	let passLength = window.prompt(
-		"character length of password?",
-		"minimum of 8 required, maximum of 128"
+	let passLength = parseInt(
+		prompt(
+			"character length of password?",
+			"minimum of 8 required, maximum of 128"
+		)
 	);
 	// if input is valid
-	if (parseInt(passLength) >= 8 && parseInt(passLength) < 128) {
+
+	if (passLength >= 8 && passLength < 128) {
 		//push password length into finalChoices array
-		finalChoices.push(parseInt(passLength));
+		finalChoices.push(passLength);
 		console.log(finalChoices);
 		lowerCasePrompt();
 	} else {
-		window.alert(
+		alert(
 			"must be minimum of 8 and no more than 128 characters in length"
 		);
 	}
-};
+}
 //Lowercase prompt
 lowerCasePrompt = () => {
-	let isLowerCase = window.confirm("will it include lowercase letters?");
+	let isLowerCase = confirm("will it include lowercase letters?");
 
 	//(push next prompt no matter the answer)
 	if (isLowerCase === true) {
@@ -94,7 +97,7 @@ lowerCasePrompt = () => {
 
 // Uppercase prompt
 isUpperCasePrompt = () => {
-	let isUpperCase = window.confirm(" will it include uppercase letters?");
+	let isUpperCase = confirm(" will it include uppercase letters?");
 	//push next prompt no matter the answer
 	if (isUpperCase === true) {
 		//push upperletters
@@ -109,7 +112,7 @@ isUpperCasePrompt = () => {
 
 //numbers prompt
 hasNumbersPrompt = () => {
-	let hasNumbers = window.confirm("will it include numbers?");
+	let hasNumbers = confirm("will it include numbers?");
 	//push next prompt no matter the answer
 	if (hasNumbers === true) {
 		finalChoices.push(...validNum);
@@ -122,43 +125,51 @@ hasNumbersPrompt = () => {
 };
 
 hasSpecCharPrompt = () => {
-	let hasSpecChar = window.confirm(
-		" will it include special characters?"
-	);
+	let hasSpecChar = confirm(" will it include special characters?");
 
 	if (hasSpecChar === true) {
 		finalChoices.push(...specChar);
 		console.log(finalChoices);
-
-		window.alert("password created!");
 	}
+	generateString(finalChoices);
+	alert("password created!");
 };
 
-//randomizer
-generateString = () => {
-	let result = "";
-
-	for (let i = 0; i < parseInt(passLength); i++) {
-		result += finalChoices.prototype.charAt(
-			Math.floor(Math.random() * parseInt(passLength))
-		);
-	}
-
-	return result;
+let randomizer = function (arr) {
+	let randomIndex = Math.floor(Math.random() * arr);
+	let rndEl = arr[randomIndex];
+	return rndEl;
 };
 
-console.log(generateString(parseInt(passLength)));
+generateString = (finalChoices) => {
+	let length = finalChoices[0];
+	let passArray = [];
+	for (let i = 0; i < length; i++) {
+		let selectedChar = randomizer(finalChoices);
+		s;
+		passArray.push(selectedChar);
+	}
+	let password = passArray.join("");
+	console.log(password);
+	let passwordText = document.querySelector("#password");
+
+	passwordText.value = password;
+};
 
 // Assignment Code
 let generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
-	let password = generatePassword();
-	let passwordText = document.querySelector("#password");
+// // Write password to the #password input
+// function writePassword() {
+// 	let password = generateString();
 
-	passwordText.value = password;
-}
+// 	let passwordText = document.querySelector("#password");
+
+// 	passwordText.value = password;
+// }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", (event) => {
+	event.preventDefault();
+	generatePassword();
+});
