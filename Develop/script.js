@@ -59,7 +59,9 @@ generatePassword = () => {
 	];
 	let specChar = ["!", "@", "#", "$", "%", "^", "&", "*"];
 	let length = [];
+	let passwordArray = [];
 
+	//prompts
 	promptPassLength = () => {
 		let passLength = parseInt(
 			prompt(
@@ -135,161 +137,35 @@ generatePassword = () => {
 		}
 	};
 
+	//generates string from options user inputs
 	generateString = () => {
-		let password = [];
 		// Get random index from array of options
 		for (let i = 0; i < length; i++) {
 			let randomIndex = Math.floor(
 				Math.random() * regEx.length
 			);
 
-			password.push(regEx[randomIndex]);
-			console.log(password.toString());
+			passwordArray.push(regEx[randomIndex]);
+			console.log(passwordArray.toString());
 		}
 
-		return password.toString();
+		//initiate
+		writePassword();
 	};
+	//writes password to HTML element
+	writePassword = () => {
+		alert("password created!");
+		let password = passwordArray.join("");
+		let passwordText = document.querySelector("#password");
+		passwordText.value = password;
+	};
+
 	// initiate 1st prompt
 	promptPassLength();
 };
-// Assignment Code
+
+// button html hooks
 let generateBtn = document.querySelector("#generate");
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", generatePassword);
-
-// Write password to the #password input
-function writePassword() {
-	let password = generatePassword();
-	let passwordText = document.querySelector("#password");
-
-	passwordText.value = password;
-}
-// let hasUpperCase = confirm(" will it include uppercase letters?");
-// let hasNumbers = confirm("will it include numbers?");
-// let hasSpecChar = confirm(" will it include special characters?");
-
-// // function generatePassword() {
-// // 	//Password length prompt and 1st prompt
-// // 	let passLength = parseInt(
-// // 		prompt(
-// // 			"character length of password?",
-// // 			"minimum of 8 required, maximum of 128"
-// // 		)
-// // 	);
-// // 	// if input is valid
-
-// // 	if (passLength >= 8 && passLength < 128) {
-// // 		//push password length into finalChoices array
-// // 		finalChoices.push(passLength);
-// // 		console.log(finalChoices);
-// // 		lowerCasePrompt();
-// // 	} else {
-// // 		alert(
-// // 			"must be minimum of 8 and no more than 128 characters in length"
-// // 		);
-// // 	}
-// // }
-// // //Lowercase prompt
-// // lowerCasePrompt = () => {
-// // 	let isLowerCase = confirm("will it include lowercase letters?");
-
-// // 	//(push next prompt no matter the answer)
-// // 	if (isLowerCase === true) {
-// // 		//push lowercase letters into finalChoices array
-// // 		finalChoices.push(...lowerLetters);
-// // 		console.log(finalChoices);
-// // 		isUpperCasePrompt();
-// // 	} else {
-// // 		isUpperCasePrompt();
-// // 		console.log(finalChoices);
-// // 	}
-// // };
-
-// // // Uppercase prompt
-// // isUpperCasePrompt = () => {
-// // 	let isUpperCase = confirm(" will it include uppercase letters?");
-// // 	//push next prompt no matter the answer
-// // 	if (isUpperCase === true) {
-// // 		//push upperletters
-// // 		finalChoices.push(...upperLetters);
-// // 		console.log(finalChoices);
-// // 		hasNumbersPrompt();
-// // 	} else {
-// // 		hasNumbersPrompt();
-// // 		console.log(finalChoices);
-// // 	}
-// // };
-
-// // //numbers prompt
-// // hasNumbersPrompt = () => {
-// // 	let hasNumbers = confirm("will it include numbers?");
-// // 	//push next prompt no matter the answer
-// // 	if (hasNumbers === true) {
-// // 		finalChoices.push(...validNum);
-// // 		//log
-// // 		console.log(finalChoices);
-// // 		hasSpecCharPrompt();
-// // 	} else {
-// // 		hasSpecCharPrompt();
-// // 	}
-// // };
-
-// // hasSpecCharPrompt = () => {
-// // 	let hasSpecChar = confirm(" will it include special characters?");
-
-// // 	if (hasSpecChar === true) {
-// // 		finalChoices.push(...specChar);
-// // 		console.log(finalChoices);
-// // 	}
-// // 	generatePassword();
-// // };
-
-// let passArray = [];
-
-// // Get random index from array of options
-// for (let i = 0; i < finalChoices[0]; i++) {
-// 	let randomIndex = Math.floor(Math.random() * finalChoices.length);
-// 	passArray.push(randomIndex);
-// 	console.log(passArray);
-// }
-
-// // let randomizer = function (arr) {
-// // 	let randomIndex = Math.floor(Math.random() * arr);
-// // 	let rndEl = arr[randomIndex];
-// // 	console.log(arr[randomIndex]);
-// // 	return rndEl;
-// // };
-
-// // generateString = (finalChoices) => {
-// // 	let length = finalChoices[0];
-// // 	let passArray = [];
-// // 	for (let i = 0; i < length; i++) {
-// // 		let selectedChar = randomizer(finalChoices);
-// // 		console.log(finalChoices);
-// // 		passArray.push(selectedChar);
-// // 	}
-// // 	let password = passArray.join("");
-// // 	console.log(password);
-// // 	let passwordText = document.querySelector("#password");
-
-// // 	passwordText.value = password;
-// // };
-
-// // // Assignment Code
-// // let generateBtn = document.querySelector("#generate");
-
-// // // // Write password to the #password input
-// // // function writePassword() {
-// // // 	let password = generateString();
-
-// // // 	let passwordText = document.querySelector("#password");
-
-// // // 	passwordText.value = password;
-// // // }
-
-// // // Add event listener to generate button
-// // generateBtn.addEventListener("click", (event) => {
-// // 	event.preventDefault();
-// // 	generatePassword();
-// // });
