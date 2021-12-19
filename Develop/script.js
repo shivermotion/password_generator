@@ -121,6 +121,7 @@ generatePassword = () => {
 			console.log(regEx);
 			promptHasSpecChar();
 		} else {
+			console.log(regEx);
 			promptHasSpecChar();
 		}
 	};
@@ -132,6 +133,9 @@ generatePassword = () => {
 
 		if (hasSpecChar === true) {
 			regEx.push(...specChar);
+			console.log(regEx);
+			generateString();
+		} else {
 			console.log(regEx);
 			generateString();
 		}
@@ -154,7 +158,7 @@ generatePassword = () => {
 	};
 	//writes password to HTML element
 	writePassword = () => {
-		alert("password created!");
+		alert("click ok to see your newly generated password!");
 		let password = passwordArray.join("");
 		let passwordText = document.querySelector("#password");
 		passwordText.value = password;
