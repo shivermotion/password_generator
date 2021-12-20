@@ -2,7 +2,7 @@
 
 ![03-javascript-homework-demo](https://user-images.githubusercontent.com/75548830/146690740-390e25e4-fc39-45a6-8521-2ee6756748a8.png)
 
-### Repo:https://github.com/shivermotion/password_generator GitHub Pages:https://shivermotion.github.io/password_generator/
+### Repo: https://github.com/shivermotion/password_generator GitHub Pages: https://shivermotion.github.io/password_generator/
 
 # Table of Content
 
